@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="titleText" format="string"/>
+    <attr name="titleColor" format="color"/>
+    <attr name="titleSize" format="dimension"/>
+
+    <attr name="validText" format="string"/>
+    <attr name="validColor" format="color"/>
+    <attr name="validSize" format="dimension"/>
+    <attr name="validCount" format="integer"/>
+
+    
+    <declare-styleable name="CustomTextView">
+        <attr name="titleText"/>
+        <attr name="titleColor"/>
+        <attr name="titleSize"/>
+    </declare-styleable>
+    <declare-styleable name="ValidCodeView">
+        <attr name="validText"/>
+        <attr name="validColor"/>
+        <attr name="validSize"/>
+        <attr name="validCount"/>
+    </declare-styleable>
+</resources>
