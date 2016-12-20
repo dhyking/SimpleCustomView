@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.own.simplecustomview.activity.CustomTextActivity;
+import com.own.simplecustomview.activity.RoundImageActivity;
+import com.own.simplecustomview.activity.ValidCodeActivity;
 import com.own.simplecustomview.adapter.MyListAdapter;
 import com.own.simplecustomview.listener.OnIemClickListener;
 
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.recycle_list)
     RecyclerView mRecycleList;
     private List<String> dataList = new ArrayList<>();
-    private final static String[] dataArr = {"自定义的TextView","自定义的ImageView"};
+    private final static String[] dataArr = {"自定义的TextView","自定义的验证码View","自定义圆角ImageView"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +48,19 @@ public class MainActivity extends AppCompatActivity {
         mMyListAdapter.setOnIemClickListener(new OnIemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                startActivity(new Intent(MainActivity.this, CustomTextActivity.class));
+                Intent mIntent = new Intent();
+                switch (position) {
+                    case 0:
+                        mIntent.setClass(MainActivity.this,CustomTextActivity.class);
+                        break;
+                    case 1:
+                        mIntent.setClass(MainActivity.this,ValidCodeActivity.class);
+                        break;
+                    case 2:
+                        mIntent.setClass(MainActivity.this, RoundImageActivity.class);
+                        break;
+                }
+                startActivity(mIntent);
             }
         });
     }

@@ -18,19 +18,17 @@ import java.util.Random;
 import java.util.Set;
 
 /**
- * 自动定义文字的view
+ * 基础自动定义文字的view
  * Created by dhy on 2016/12/15.
  */
 
 public class CustomTextView extends View {
 
-    private String titleText;        //文本内容
-    private int titleColor;          //文本字体颜色
-    private int titleSize;           //文本字体大小
-    private Paint mPaint;            //文本画笔对象
+    private String titleText;           //文本内容
+    private int titleColor;             //文本字体颜色
+    private int titleSize;              //文本字体大小
+    private Paint mPaint;               //文本画笔对象
     private Rect mRect;
-    private OnTextChangeListener mOnTextChangeListener; //文字改变监听
-    private Random mRandom = new Random();
 
 
     public CustomTextView(Context context) {
@@ -57,7 +55,7 @@ public class CustomTextView extends View {
                 case R.styleable.CustomTextView_titleSize:
                     //字体大小设置为sp
                     titleSize = mTypedArray.getDimensionPixelSize(attr,
-                            (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,16,getResources().getDisplayMetrics()));
+                            (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,0,getResources().getDisplayMetrics()));
                     break;
             }
         }
@@ -75,34 +73,8 @@ public class CustomTextView extends View {
         mPaint.setTextSize(titleSize);
         mRect = new Rect();
         mPaint.getTextBounds(titleText,0,titleText.length(), mRect);
-        this.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                titleText = randomText();
-                if (mOnTextChangeListener != null) {
-                    mOnTextChangeListener.onTextChanged(v,titleText);
-                }
-                postInvalidate();
-            }
-        });
     }
 
-    /**
-     * 生成随机的数字
-     * @return
-     */
-    private String randomText() {
-        Set<Integer> set = new HashSet<>(4);
-        while (set.size() < 4) {
-            int singleNum = mRandom.nextInt(10);
-            set.add(singleNum);
-        }
-        StringBuffer sb = new StringBuffer();
-        for (Integer num : set) {
-            sb.append(num + "");
-        }
-        return sb.toString();
-    }
 
     /**
      *根据适应文字长度，测量宽高
@@ -149,22 +121,5 @@ public class CustomTextView extends View {
         mPaint.setColor(titleColor);
         canvas.drawText(titleText,getWidth() / 2 - mRect.width() / 2,getHeight() /2 + mRect.height() / 2 ,mPaint);
     }
-
-    /**
-     * 获取到文本字符串
-     * @return
-     */
-    public String getTitleText() {
-        return titleText;
-    }
-
-    /**
-     * 设置文本改变监听
-     * @param onTextChangeListener
-     */
-    public void setOnTextChangeListener(OnTextChangeListener onTextChangeListener) {
-        this.mOnTextChangeListener = onTextChangeListener;
-    }
-
 
 }

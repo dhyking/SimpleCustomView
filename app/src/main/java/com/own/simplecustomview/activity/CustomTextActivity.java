@@ -22,12 +22,6 @@ public class CustomTextActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_text);
         ButterKnife.bind(this);
-        mTvCustom.setOnTextChangeListener(new OnTextChangeListener() {
-            @Override
-            public void onTextChanged(View v, String text) {
-                Log.d("CustomTextActivity", "获取数据："+text);
-            }
-        });
 
     }
 }

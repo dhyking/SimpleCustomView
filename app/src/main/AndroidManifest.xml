@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".activity.ValidCodeActivity">
         </activity>
+        <activity android:name=".activity.RoundImageActivity">
+        </activity>
     </application>
 
 </manifest>

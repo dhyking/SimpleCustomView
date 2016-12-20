@@ -16,7 +16,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        app:validText="4534"
         android:padding="10dp"
+        app:validSize="20sp"
+        app:validColor="@android:color/white"
         app:validCount="4"
         />
 </RelativeLayout>

@@ -50,13 +50,13 @@ public class ValidCodeView extends View {
         for (int i = 0; i < mTypedArray.getIndexCount(); i++) {
             int attr = mTypedArray.getIndex(i);
             switch (attr) {
-                case R.styleable.CustomTextView_titleText:
+                case R.styleable.ValidCodeView_validText:
                     validText = mTypedArray.getString(attr);
                     break;
-                case R.styleable.CustomTextView_titleColor:
+                case R.styleable.ValidCodeView_validColor:
                     validColor = mTypedArray.getColor(attr, Color.BLACK);
                     break;
-                case R.styleable.CustomTextView_titleSize:
+                case R.styleable.ValidCodeView_validSize:
                     //字体大小设置为sp
                     validSize = mTypedArray.getDimensionPixelSize(attr,
                             (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,0,getResources().getDisplayMetrics()));
@@ -66,6 +66,7 @@ public class ValidCodeView extends View {
                 break;
             }
         }
+        mTypedArray.recycle();
         init();
     }
 
@@ -75,7 +76,7 @@ public class ValidCodeView extends View {
     private void init() {
         mPaint = new Paint();
 //        mPaint.setTextSize(validSize);
-//        mRect = new Rect();
+        mRect = new Rect();
 //        mPaint.getTextBounds(validText,0,validText.length(), mRect);
         this.setOnClickListener(new OnClickListener() {
             @Override
@@ -147,9 +148,8 @@ public class ValidCodeView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         mPaint.setTextSize(validSize);
-        mRect = new Rect();
-        mPaint.getTextBounds(validText,0,validText.length(), mRect);
         validText = randomText();
+        mPaint.getTextBounds(validText,0,validText.length(), mRect);
         mPaint.setColor(Color.CYAN);
         canvas.drawRect(0,0,getMeasuredWidth(),getMeasuredHeight(),mPaint);
         mPaint.setColor(validColor);

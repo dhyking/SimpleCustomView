@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="titleText" format="string"/>
-    <attr name="titleColor" format="color"/>
-    <attr name="titleSize" format="dimension"/>
+    <!--<attr name="titleText" format="string"/>-->
+    <!--<attr name="titleColor" format="color"/>-->
+    <!--<attr name="titleSize" format="dimension"/>-->
 
-    <attr name="validText" format="string"/>
-    <attr name="validColor" format="color"/>
-    <attr name="validSize" format="dimension"/>
-    <attr name="validCount" format="integer"/>
+    <!--<attr name="validText" format="string"/>-->
+    <!--<attr name="validColor" format="color"/>-->
+    <!--<attr name="validSize" format="dimension"/>-->
+    <!--<attr name="validCount" format="integer"/>-->
 
     
+
+    <!--最基本自定义文字view-->
     <declare-styleable name="CustomTextView">
-        <attr name="titleText"/>
-        <attr name="titleColor"/>
-        <attr name="titleSize"/>
+        <attr name="titleText" format="string"/>
+        <attr name="titleColor" format="color"/>
+        <attr name="titleSize" format="dimension"/>
     </declare-styleable>
+
+    <!--自定义验证码view-->
     <declare-styleable name="ValidCodeView">
-        <attr name="validText"/>
-        <attr name="validColor"/>
-        <attr name="validSize"/>
-        <attr name="validCount"/>
+        <attr name="validText" format="string"/>
+        <attr name="validColor" format="color"/>
+        <attr name="validSize" format="dimension"/>
+        <attr name="validCount" format="integer"/>
     </declare-styleable>
+
+    <!--自定义带圆角view-->
+    <declare-styleable name="RoundImageView">
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+        <attr name="corner_x" format="dimension"/>
+        <attr name="corner_y" format="dimension"/>
+    </declare-styleable>
+
+    
 </resources>
