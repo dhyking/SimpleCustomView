@@ -16,18 +16,24 @@ import android.widget.ImageView;
 import com.own.simplecustomview.R;
 
 /**
- * 自定义带圆角同时有边界的view
+ * 自定义带圆角同时带有边界的view
  * Created by dhy on 2016/12/20.
  */
 
 public class RoundImageView extends ImageView {
-    private float borderWidth;             //边界宽度
-    private int borderColor;               //颜色
-    private float roundConerX;            //x方向圆角
-    private float roundConerY;            //y方向圆角
+    private float borderWidth;              //边界宽度
+    private int borderColor;                //颜色
+    private float roundCornerX;             //x方向圆角
+    private float roundCornerY;             //y方向圆角
     private Paint mPaint;                   //普通画笔
     private Paint mPaintCover;              //遮罩的画笔
     private Paint mPaintBorder;             //边界的画笔
+    private Bitmap coverBitmap;             //遮罩图
+    private Canvas coverCanvas;             //遮罩画布
+    private Bitmap originBitmap;            //原图
+    private Canvas originCanvas;            //原图画布
+    private RectF mRoundRectClip;
+    private RectF borderRect;
 
     public RoundImageView(Context context) {
         this(context, null);
@@ -52,11 +58,11 @@ public class RoundImageView extends ImageView {
                     borderColor = mTypedArray.getColor(attr, Color.WHITE);
                     break;
                 case R.styleable.RoundImageView_corner_x:
-                    roundConerX = mTypedArray.getDimension(attr, TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                    roundCornerX = mTypedArray.getDimension(attr, TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                             0, getResources().getDisplayMetrics()));
                     break;
                 case R.styleable.RoundImageView_corner_y:
-                    roundConerY = mTypedArray.getDimension(attr, TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                    roundCornerY = mTypedArray.getDimension(attr, TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                             0, getResources().getDisplayMetrics()));
                     break;
             }
@@ -85,12 +91,7 @@ public class RoundImageView extends ImageView {
         }
     }
 
-    private Bitmap coverBitmap;
-    private Canvas coverCanvas;
-    private Bitmap originBitmap;
-    private Canvas originCanvas;
-    private RectF mRoundRectClip;
-    private RectF borderRect;
+
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -106,7 +107,7 @@ public class RoundImageView extends ImageView {
             mRoundRectClip = new RectF(borderWidth,borderWidth,getWidth() - borderWidth,getHeight() - borderWidth);
         }
         //绘制圆角矩形
-        coverCanvas.drawRoundRect(mRoundRectClip,roundConerX ,roundConerY,mPaint);
+        coverCanvas.drawRoundRect(mRoundRectClip,roundCornerX ,roundCornerY,mPaint);
         // 使用遮罩画笔扣除原图中的圆角矩形外面的部分
         originCanvas.drawBitmap(coverBitmap,0,0,mPaintCover);
         //创建border矩形
@@ -114,7 +115,7 @@ public class RoundImageView extends ImageView {
             borderRect =  new RectF(borderWidth / 2,borderWidth / 2,getWidth() - borderWidth / 2,getHeight() - borderWidth / 2);
         }
         //绘制border
-        originCanvas.drawRoundRect(borderRect,roundConerX,roundConerY,mPaintBorder);
+        originCanvas.drawRoundRect(borderRect,roundCornerX,roundCornerY,mPaintBorder);
         canvas.drawBitmap(originBitmap,0,0,mPaint);
     }
 }

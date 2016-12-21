@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".activity.RoundImageActivity">
         </activity>
+        <activity android:name=".activity.BezierActivity">
+        </activity>
     </application>
 
 </manifest>

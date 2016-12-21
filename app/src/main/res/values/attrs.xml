@@ -34,5 +34,10 @@
         <attr name="corner_y" format="dimension"/>
     </declare-styleable>
 
+    <declare-styleable name="BezierView">
+        <attr name="bezier_color" format="color"/>
+        <attr name="bezier_width" format="dimension"/>
+    </declare-styleable>
+
     
 </resources>
