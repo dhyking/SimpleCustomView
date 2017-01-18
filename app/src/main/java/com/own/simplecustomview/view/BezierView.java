@@ -26,7 +26,7 @@ public class BezierView extends View {
     private Path mPath;
     private Point startPoint;   //开始点
     private Point endPoint;     //结束点
-    private Point assistPoint;   //辅助点
+    private Point assistPoint;  //辅助点
     public BezierView(Context context) {
         this(context,null);
     }
