@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.own.simplecustomview.activity.BezierActivity;
 import com.own.simplecustomview.activity.CustomTextActivity;
+import com.own.simplecustomview.activity.LineChartActivity;
 import com.own.simplecustomview.activity.RoundImageActivity;
 import com.own.simplecustomview.activity.ValidCodeActivity;
 import com.own.simplecustomview.adapter.MyListAdapter;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mRecycleList;
     private List<String> dataList = new ArrayList<>();
     private final static String[] dataArr = {"自定义的TextView","自定义的验证码View","自定义圆角ImageView",
-            "简单自定义贝塞尔曲线"};
+            "简单自定义贝塞尔曲线","自定义折线图"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 3:
                         mIntent.setClass(MainActivity.this, BezierActivity.class);
+                        break;
+                    case 4:
+                        mIntent.setClass(MainActivity.this, LineChartActivity.class);
                         break;
                 }
                 startActivity(mIntent);
