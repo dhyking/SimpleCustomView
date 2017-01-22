@@ -13,16 +13,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class LineChartActivity extends AppCompatActivity {
-    private float[] xAlis = new float[]{20,50,80,110,140,170,200};
-    private float[] yAlis = new float[]{1,4,10,0,0,30,0.01f};
     private float[] yPercent = new float[7];
+    private float[] amountArr =  new float[]{1.43f,0.5f,23,19999,0.02f,5,213213};
     private List<Float> list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line_chart);
         dealData();
-        LineChartView mLineChartView = new LineChartView(this,xAlis,yPercent);
+        LineChartView mLineChartView = new LineChartView(this,yPercent,amountArr);
         LinearLayout mLinearLayout = (LinearLayout) findViewById(R.id.layout);
         Log.d("LineChartActivity", "mLinearLayout.getWidth():" + mLinearLayout.getWidth());
         Log.d("LineChartActivity", "mLinearLayout.getHeight():" + mLinearLayout.getHeight());
@@ -31,17 +30,15 @@ public class LineChartActivity extends AppCompatActivity {
     }
 
     private void dealData() {
-        for (int i = 0; i < yAlis.length; i++) {
-            list.add(yAlis[i]);
+        for (int i = 0; i < amountArr.length; i++) {
+            list.add(amountArr[i]);
         }
-        float max = Collections.max(list) * 1.5f;
+        float max = Collections.max(list) * 1.8f;
         for (int j = 0; j < yPercent.length; j++) {
-            float data = (yAlis[j] / max);
-            if (yAlis[j] != 0) {
+
+                float data = (amountArr[j] / max);
                 yPercent[j] = ((float) Math.round(data *10000)) /10000;
-            } else {
-                yPercent[j] = 0;
-            }
+            Log.d("LineChartActivity", "yPercent[j]:" + yPercent[j]);
         }
 
     }

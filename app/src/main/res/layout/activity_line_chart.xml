@@ -9,7 +9,7 @@
     tools:context="com.own.simplecustomview.activity.LineChartActivity">
     <LinearLayout
         android:id="@+id/layout"
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
         android:orientation="vertical"
         android:background="@color/colorAccent"

@@ -4,4 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="line_chart_item">20dp</dimen>
+    <dimen name="line_date_size">20sp</dimen>
+    <dimen name="line_week_size">12sp</dimen>
+    <dimen name="text_mark">10sp</dimen>
 </resources>
